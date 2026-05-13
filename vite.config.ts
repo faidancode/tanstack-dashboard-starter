@@ -5,6 +5,7 @@ import viteReact from "@vitejs/plugin-react"
 import viteTsConfigPaths from "vite-tsconfig-paths"
 import tailwindcss from "@tailwindcss/vite"
 import { nitro } from "nitro/vite"
+import { resolve } from "path"
 
 const config = defineConfig({
   plugins: [
@@ -18,6 +19,15 @@ const config = defineConfig({
     tanstackStart(),
     viteReact(),
   ],
+  resolve: {
+    alias: {
+      "@": resolve(__dirname, "./src"),
+      "@core": resolve(__dirname, "./src/core"),
+      "@features": resolve(__dirname, "./src/features"),
+      "@shared": resolve(__dirname, "./src/shared"),
+      "@routes": resolve(__dirname, "./src/routes"),
+    },
+  },
 })
 
 export default config
